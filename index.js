@@ -22,3 +22,27 @@ function longestConsec(strarr, k) {
 	// return longest.
 	return longest;
 }
+
+/* 
+s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+
+Could you make a program that
+
+makes this string uppercase
+gives it sorted in alphabetical order by last name.
+When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
+
+So the result of function meeting(s) will be:
+
+
+*/
+
+function meeting(s) {
+	s = s.toUpperCase();
+	// remove all the semi colons, and remove the the colons.
+	return s
+		.split(';')
+		.map((names) => names.split(':').reverse())
+		.sort()
+		.reduce((output, name) => (output += `(${name[0]}, ${name[1]})`), '');
+}
