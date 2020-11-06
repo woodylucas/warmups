@@ -121,3 +121,30 @@ function iqTest(numbers) {
 	// find the index of that element in numb array plus 1
 	return odd.length < even.length ? numb.indexOf(odd[0]) + 1 : numb.indexOf(even[0]) + 1;
 }
+
+/* 
+Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).
+*/
+
+function toCamelCase(str) {
+	if (!str.length) return '';
+
+	let stringArr;
+
+	if (str.indexOf('-') !== -1) {
+		stringArr = str.split('-');
+	} else if (str.indexOf('_') !== -1) {
+		stringArr = str.split('_');
+	}
+	// declare a varaible that will store the first element of stringArray
+	// buid an arbitrary
+	let camelCase = Array.from({length: stringArr.length}, () => '');
+	camelCase[0] = stringArr[0];
+
+	// iterate over camelCase, and fill the placeholders with the values from stringArray
+	for (let i = 1; i < camelCase.length; i++) {
+		const word = stringArr[i];
+		camelCase[i] += word[0].toUpperCase() + word.slice(1);
+	}
+	return camelCase.join('');
+}
