@@ -147,4 +147,12 @@ function toCamelCase(str) {
 		camelCase[i] += word[0].toUpperCase() + word.slice(1);
 	}
 	return camelCase.join('');
+
+	/*  REGEX SOLUTION
+        const regex = /[-_]\w/gi; 
+        return str.replace(regex, function(match) {
+        return match.charAt(1).toUpperCase(); 
+        })
+    
+    */
 }
