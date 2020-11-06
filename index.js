@@ -102,3 +102,22 @@ function order(words) {
 		})
 		.join(' ');
 }
+
+/* 
+Bob is preparing to pass IQ test. The most frequent task in this test is to find out which one of the given numbers differs from the others. Bob observed that one number usually differs from the others in evenness. Help Bob — to check his answers, he needs a program that among the given numbers finds one that is different in evenness, and return a position of this number.
+
+! Keep in mind that your task is to help Bob solve a real IQ test, which means indexes of the elements start from 1 (not 0)
+
+
+*/
+
+function iqTest(numbers) {
+	// create an array of numbers using split
+	const numb = numbers.split(' ');
+	// create two arrays for one for odd, one for even
+	const odd = numb.filter((num) => num % 2 !== 0);
+	const even = numb.filter((num) => num % 2 === 0);
+	// if the length. of odd is less than the length of even
+	// find the index of that element in numb array plus 1
+	return odd.length < even.length ? numb.indexOf(odd[0]) + 1 : numb.indexOf(even[0]) + 1;
+}
