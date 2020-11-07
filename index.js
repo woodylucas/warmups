@@ -156,3 +156,10 @@ function toCamelCase(str) {
     
     */
 }
+
+// REGEX Practice
+
+function disemvowel(str) {
+	// g = global , i = case sensitive
+	return str.replace(/[aeiou]/gi, '');
+}
