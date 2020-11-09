@@ -163,3 +163,17 @@ function disemvowel(str) {
 	// g = global , i = case sensitive
 	return str.replace(/[aeiou]/gi, '');
 }
+
+function isValidSubsequence(array, sequence) {
+	// initialize two pointers to zero
+	let arrIdx = 0;
+	let seqIdx = 0;
+	// iterate through both arrays
+	while (arrIdx < array.length && seqIdx < sequence.length) {
+		// IF the elements in both arrays are the same, increment sqxIdx
+		if (array[arrIdx] === sequence[seqIdx]) seqIdx++;
+		arrIdx++;
+	}
+	// if sqxIdx is the same value as sequence array length
+	return seqIdx === sequence.length;
+}
