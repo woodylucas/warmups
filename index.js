@@ -177,3 +177,18 @@ function isValidSubsequence(array, sequence) {
 	// if sqxIdx is the same value as sequence array length
 	return seqIdx === sequence.length;
 }
+
+/*
+function isValidSubsequence(array, sequence) {
+  let seqIdx = 0; // Declare a variable seqIdx initialize to 0. 
+	
+	// iterate through the array 
+	for (const value of array) {
+		if (seqIdx === sequence.length) break;
+		if (sequence[seqIdx] === value) seqIdx++; 
+	}
+	return seqIdx === sequence.length; 
+}
+
+
+*/
