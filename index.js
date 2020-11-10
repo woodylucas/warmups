@@ -244,3 +244,22 @@ function threeNumberSum(array, targetSum) {
 	// RETURN triplets.
 	return triplets;
 }
+
+/* 
+
+Description:
+You have an array of numbers.
+Your task is to sort ascending odd numbers but even numbers must be on their places.
+
+Zero isn't an odd number and you don't need to move it. If you have an empty array, you need to return it.
+
+*/
+
+function sortArray(array) {
+	// create an odd array
+	// sort the array
+	const odd = array.filter((elem) => elem % 2 !== 0).sort((a, b) => a - b);
+	// IF the element is odd remove from the odd array and add to shifted array,
+	// otherwise even keep it at it's position.
+	return array.map((elem) => (elem % 2 !== 0 ? odd.shift() : elem)); // Return a sorted odd only array.
+}
