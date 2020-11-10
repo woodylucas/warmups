@@ -213,3 +213,34 @@ var isSubsequence = function(s, t) {
 	}
 	return sIdx === s.length;
 };
+
+// O(n^2) time | O(n) space
+function threeNumberSum(array, targetSum) {
+	// sort the array
+	array.sort((a, b) => a - b);
+	// declare a const variable triplets that is initialize to an empty array.
+	const triplets = [];
+	// iterate through array, break when the array has to be the third value from the end of the array.
+	for (let i = 0; i < array.length - 2; i++) {
+		if (array[i] === array[i - 1]) continue;
+		// initialize a left pointer, and a right pointer.
+		let left = i + 1;
+		let right = array.length - 1;
+		// While both our pointers aren't overlapping each other...
+		while (left < right) {
+			const currentSum = array[i] + array[left] + array[right];
+			if (currentSum === targetSum) {
+				triplets.push([ array[i], array[left], array[right] ]);
+				left++;
+				right--;
+				while (left < right && array[left] === array[left - 1]) left++;
+			} else if (currentSum < targetSum) {
+				left++;
+			} else if (currentSum > targetSum) {
+				right--;
+			}
+		}
+	}
+	// RETURN triplets.
+	return triplets;
+}
