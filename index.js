@@ -263,3 +263,39 @@ function sortArray(array) {
 	// otherwise even keep it at it's position.
 	return array.map((elem) => (elem % 2 !== 0 ? odd.shift() : elem)); // Return a sorted odd only array.
 }
+
+/* 
+Sum Consecutives 
+
+You are given a list/array which contains only integers (positive and negative). Your job is to sum only the numbers that are the same and consecutive. The result should be one list.
+
+Extra credit if you solve it in one line. You can assume there is never an empty list/array and there will always be an integer.
+
+Same meaning: 1 == 1
+
+1 != -1
+
+
+
+*/
+
+function sumConsecutives(s) {
+	// declare variable sumConsec initialize to an empty array to store the sums of the consecutives
+	const sumConsec = [];
+	// declare a temp variable initialize to 0
+	let temp = 0;
+	// iterate through the s array an obtain all the elements
+	for (let i = 0; i < s.length; i++) {
+		// declare two variables current, next
+		const current = s[i];
+		const next = s[i + 1];
+		// IF current is the same element as next
+		if (current === next) {
+			temp += current; // accumulate the sum in temp, and push into sumConsec array.
+		} else {
+			sumConsec.push(temp + current); // Push temp + current into sumConsec
+			temp = 0; // Set temp to zero to establish a new accumulator
+		}
+	}
+	return sumConsec;
+}
