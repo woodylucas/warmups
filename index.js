@@ -336,3 +336,43 @@ var threeSum = function (nums) {
 
   return triplets;
 };
+
+function smallestDifference(arrayOne, arrayTwo) {
+  // we need to sort both arrays
+  arrayOne.sort((a, b) => a - b);
+  arrayTwo.sort((a, b) => a - b);
+
+  /*
+	-1 3 5 10 20 28 
+	  ^
+	15 17 26 134 135 
+	^
+	*/
+  // Establish two pointers for two sorted arrays
+  let [idxOne, idxTwo] = [0, 0];
+  // Arbitrary Placeholders of Infinity: smallest, and current
+  let [smallest, current, smallestPair] = [Infinity, Infinity, []];
+
+  while (idxOne < arrayOne.length && idxTwo < arrayTwo.length) {
+    // declare to variables firstNum, secondNum initialize to the value of idxOne, and idxTwo
+    const firstNum = arrayOne[idxOne];
+    const secondNum = arrayTwo[idxTwo];
+
+    // if element in the first array is less than the element in the second
+    if (secondNum > firstNum) {
+      current = secondNum - firstNum; // reinitialize current to the difference of second and first
+      idxOne++; // increment the first pointer
+    } else if (firstNum > secondNum) {
+      current = firstNum - secondNum; // reinitialize current to the difference of second and first
+      idxTwo++;
+    } else {
+      return [firstNum, secondNum];
+    }
+    if (smallest > current) {
+      smallest = current; // smallest will be set to the smallest difference
+      smallestPair = [firstNum, secondNum]; // reinitialize the smallest pair depending on its differences
+    }
+  }
+  // return smallestPair
+  return smallestPair;
+}
