@@ -376,3 +376,22 @@ function smallestDifference(arrayOne, arrayTwo) {
   // return smallestPair
   return smallestPair;
 }
+
+function moveElementToEnd(array, toMove) {
+  // establish two pointers: leftIdx, rightIdx
+  let [leftIdx, rightIdx] = [0, array.length - 1];
+
+  while (leftIdx < rightIdx) {
+    while (leftIdx < rightIdx && array[rightIdx] === toMove) rightIdx--;
+    if (array[leftIdx] === toMove) swap(array, leftIdx, rightIdx);
+    leftIdx++;
+  }
+  // return array.
+  return array;
+}
+
+function swap(array, idx1, idx2) {
+  const temp = array[idx1];
+  array[idx1] = array[idx2];
+  array[idx2] = temp;
+}
