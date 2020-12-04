@@ -395,3 +395,28 @@ function swap(array, idx1, idx2) {
   array[idx1] = array[idx2];
   array[idx2] = temp;
 }
+
+function isMonotonic(array) {
+  // Write your code here.
+  if (array.length <= 2) return true;
+  // direction is positive -> increasing
+  // direction is zero -> flat direction
+  // direction is negative => decreasing direction
+  let direction = array[1] - array[0];
+  for (let i = 2; i < array.length; i++) {
+    if (direction === 0) {
+      direction = array[i] - array[i - 1];
+      continue;
+    }
+    if (breaksDirection(direction, array[i - 1], array[i])) return false;
+  }
+  return true;
+}
+
+function breaksDirection(direction, previousInt, currentInt) {
+  let difference = currentInt - previousInt;
+  if (direction > 0) {
+    return difference < 0;
+  }
+  return difference > 0;
+}
