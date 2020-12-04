@@ -420,3 +420,14 @@ function breaksDirection(direction, previousInt, currentInt) {
   }
   return difference > 0;
 }
+
+function isMonotonic2(array) {
+  // Write your code here.
+  let isNonDecreasing = true;
+  let isNonIncreasing = true;
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < array[i - 1]) isNonDecreasing = false;
+    if (array[i] > array[i - 1]) isNonDecreasing = false;
+  }
+  return isNonDecreasing || isNonIncreasing;
+}
