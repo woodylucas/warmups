@@ -463,3 +463,18 @@ function spiralTraverse(array) {
   }
   return result;
 }
+
+var shuffle = function (nums, n) {
+  let shuffled = []; // declare a variable shuffled that is initialized to an empty array.
+  // Declare two pointers one at the beginning idx, next at the nthIdx
+  let leftIdx = 0,
+    nthIdx = n;
+  // Push the elements into the array at the starting idx followed by the nthIdx. When the nthIdx reaches the end of the array break
+  while (nthIdx < nums.length) {
+    shuffled.push(nums[leftIdx], nums[nthIdx]);
+    leftIdx++;
+    nthIdx++;
+  }
+  // return shuffled
+  return shuffled;
+};
