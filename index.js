@@ -478,3 +478,42 @@ var shuffle = function (nums, n) {
   // return shuffled
   return shuffled;
 };
+
+var generate = function (numRows) {
+  // create an array of elements that is the length of out nums
+  const pascalsTriangle = Array.from({ length: numRows });
+  // create the rows in the array w/ for loop:
+  for (let i = 0; i < numRows; i++) {
+    const row = Array.from({ length: i + 1 }, () => 0);
+    // Set the first element to 1
+    row[0] = 1;
+    // Set the last element to 1
+    row[row.length - 1] = 1;
+    // iterate through the array to have access to the columns
+    for (let col = 1; col < row.length - 1; col++) {
+      // Declare a variable rowAbove initialize to the previous row: i - 1
+      const rowAbove = pascalsTriangle[i - 1];
+      row[col] = rowAbove[col] + rowAbove[col - 1];
+    }
+    pascalsTriangle[i] = row;
+  }
+  return pascalsTriangle;
+};
+
+var isAnagram = function (s, t) {
+  const freqCount = {};
+  if (s.length !== t.length) return false;
+
+  for (const char of s) {
+    freqCount[char] = (freqCount[char] || 0) + 1;
+  }
+
+  for (const char of t) {
+    if (!freqCount[char]) {
+      return false;
+    } else {
+      freqCount[char]--;
+    }
+  }
+  return true;
+};
