@@ -526,7 +526,7 @@ function matrix(n) {
   let startRow = 0,
     endRow = n - 1;
 
-  let counter = 0;
+  let counter = 1;
 
   while (startCol <= endCol && startRow <= endRow) {
     for (let col = startCol; col <= endCol; col++) {
