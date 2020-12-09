@@ -517,3 +517,42 @@ var isAnagram = function (s, t) {
   }
   return true;
 };
+
+function matrix(n) {
+  let result = Array.from({ length: n }, () => []);
+
+  let startCol = 0,
+    endCol = n - 1;
+  let startRow = 0,
+    endRow = n - 1;
+
+  let counter = 0;
+
+  while (startCol <= endCol && startRow <= endRow) {
+    for (let col = startCol; col <= endCol; col++) {
+      result[startRow][col] = counter;
+      counter++;
+    }
+
+    for (let row = startRow + 1; row <= endRow; row++) {
+      result[row][endCol] = counter;
+      counter++;
+    }
+
+    for (let col = endCol - 1; col >= startCol; col--) {
+      result[endRow][col] = counter;
+      counter++;
+    }
+
+    for (let row = endRow - 1; row > startRow; row--) {
+      result[row][startCol] = counter;
+      counter++;
+    }
+    startCol++;
+    endCol--;
+    startRow++;
+    endRow--;
+  }
+
+  return result;
+}
