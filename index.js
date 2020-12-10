@@ -574,3 +574,53 @@ function swap(array, idx1, idx2) {
   array[idx1] = array[idx2];
   array[idx2] = temp;
 }
+
+/*
+ 
+ 0 1 2 3 4 5 6 7
+ a b c a b c b b
+           ^
+ 
+ seen = {
+  a: 3
+  b: 6
+  c: 5
+
+  
+ }
+ 
+ ab
+ abc = 3 
+ bca = 3 
+ cab = 3 
+ abc = 3 
+ 
+ as we iterate through the array we have to retrieve every character 
+
+  the new startIdx will be initialize to the current max(startIdx seen[char] + 1)
+  0 + 1 
+  
+ 
+ seen[char] = index 
+ 
+ 
+ 
+ */
+var lengthOfLongestSubstring = function (s) {
+  const seen = {}; // declare const variable seen initialize to an empty object to use as a lookup for characters
+  let startIdx = 0; // declare variable startIdx that is initalize to 0.
+  let longest = [0, 1]; // start index is 0, and the second element is current index
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    //  if the character is in the object establish a new startIdx
+    if (char in seen) {
+      startIdx = Math.max(startIdx, seen[char] + 1);
+    }
+
+    if (longest[1] - longest[0] < i + 1 - startIdx) {
+      longest = [startIdx, i + 1];
+    }
+    seen[char] = i;
+  }
+  return s.slice(longest[0], longest[1]).length;
+};
