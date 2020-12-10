@@ -556,3 +556,21 @@ function matrix(n) {
 
   return result;
 }
+
+var moveZeroes = function (nums) {
+  // Declare a variable non zero initialize to 0
+  let nonZero = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      swap(nums, nonZero, i);
+      nonZero++;
+    }
+  }
+  return nums;
+};
+
+function swap(array, idx1, idx2) {
+  const temp = array[idx1];
+  array[idx1] = array[idx2];
+  array[idx2] = temp;
+}
