@@ -624,3 +624,23 @@ var lengthOfLongestSubstring = function (s) {
   }
   return s.slice(longest[0], longest[1]).length;
 };
+
+var compress = function (chars) {
+  let index = 0;
+  let i = 0;
+  while (i < chars.length) {
+    let j = i;
+    while (j < chars.length && chars[j] === chars[i]) {
+      j++;
+    }
+    chars[index++] = chars[i];
+    if (j - i > 1) {
+      let count = j - i + "";
+      for (const char of count.slice()) {
+        chars[index++] = char;
+      }
+    }
+    i = j;
+  }
+  return index;
+};
