@@ -644,3 +644,20 @@ var compress = function (chars) {
   }
   return index;
 };
+
+var firstUniqChar = function (s) {
+  // Declare a const freqCount initialize to an empty object.
+  const freqCount = {};
+
+  for (const char of s) {
+    freqCount[char] = (freqCount[char] || 0) + 1;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (freqCount[char] === 1) {
+      return i;
+    }
+  }
+  return -1;
+};
