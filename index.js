@@ -661,3 +661,38 @@ var firstUniqChar = function (s) {
   }
   return -1;
 };
+
+/*
+
+0 1 2 
+
+1,2,3,0,0,0, 
+    ^     ^
+    m     rightIdx
+2,5,6  
+    ^ 
+    n
+ 
+ */
+
+var merge = function (nums1, m, nums2, n) {
+  // we need two pointers starting at the third element in the array.
+  m--;
+  n--;
+  let rightIdx = nums1.length - 1;
+
+  while (rightIdx >= 0) {
+    if (m < 0) {
+      nums1[rightIdx] = nums2[n--];
+    } else if (n < 0) {
+      nums1[rightIdx] = nums1[m--];
+    } else {
+      if (nums1[m] > nums2[n]) {
+        nums1[rightIdx] = nums1[m--];
+      } else {
+        nums1[rightIdx] = nums2[n--];
+      }
+    }
+    rightIdx--;
+  }
+};
