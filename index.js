@@ -696,3 +696,22 @@ var merge = function (nums1, m, nums2, n) {
     rightIdx--;
   }
 };
+
+var subarraySum = function (nums, k) {
+  const map = new Map();
+  let count = 0;
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (!map.has(sum)) {
+      map.set(sum, 1);
+    } else {
+      map.set(sum, map.get(sum) + 1);
+    }
+    sum += nums[i];
+    console.log(map);
+    if (map.has(sum - k)) {
+      count += map.get(sum - k);
+    }
+  }
+  return count;
+};
