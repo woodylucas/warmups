@@ -715,3 +715,20 @@ var subarraySum = function (nums, k) {
   }
   return count;
 };
+
+function union(arrays) {
+  // Iterate over the arrays
+  let numbers = arrays.flat();
+  return numbers.reduce((acc, curr) => {
+    console.log(acc);
+    return acc.includes(curr) ? acc : [...acc, curr];
+  }, []);
+}
+
+console.log(
+  union([
+    [5, 10, 15],
+    [15, 88, 1, 5, 7],
+    [100, 15, 10, 1, 5],
+  ])
+);
