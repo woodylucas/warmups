@@ -732,3 +732,32 @@ console.log(
     [100, 15, 10, 1, 5],
   ])
 );
+
+
+// Declare a function checkLogger input: boolean 
+function checkerLogger(func) {
+  // Declare a constant variable booleanObj initialize to an empty object.
+  const booleanObj = {true: 0, false: 0}; 
+  return function(...args) {
+    if (args[0]) {
+     	booleanObj[String(func(...args))]++; 
+      return func(...args); 
+    } 
+    return booleanObj
+  }
+
+}
+
+
+const isOdd = num => num % 2 === 1
+const oddCounter = checkerLogger(isOdd);
+console.log(oddCounter()); // ->  { true: 0, false: 0 })
+console.log(oddCounter(3)); // -> true
+console.log(oddCounter(2)); // false 
+console.log(oddCounter(5)); // false 
+console.log(oddCounter()); //  -> { true: 1, false: 1 }
+
+
+
+
+/*
