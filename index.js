@@ -733,31 +733,35 @@ console.log(
   ])
 );
 
-
-// Declare a function checkLogger input: boolean 
+// Declare a function checkLogger input: boolean
 function checkerLogger(func) {
   // Declare a constant variable booleanObj initialize to an empty object.
-  const booleanObj = {true: 0, false: 0}; 
-  return function(...args) {
+  const booleanObj = { true: 0, false: 0 };
+  return function (...args) {
     if (args[0]) {
-     	booleanObj[String(func(...args))]++; 
-      return func(...args); 
-    } 
-    return booleanObj
-  }
-
+      booleanObj[String(func(...args))]++;
+      return func(...args);
+    }
+    return booleanObj;
+  };
 }
 
-
-const isOdd = num => num % 2 === 1
+const isOdd = (num) => num % 2 === 1;
 const oddCounter = checkerLogger(isOdd);
 console.log(oddCounter()); // ->  { true: 0, false: 0 })
 console.log(oddCounter(3)); // -> true
-console.log(oddCounter(2)); // false 
-console.log(oddCounter(5)); // false 
+console.log(oddCounter(2)); // false
+console.log(oddCounter(5)); // false
 console.log(oddCounter()); //  -> { true: 1, false: 1 }
 
+function effectString(string, callback) {
+  let result = ""; // Declare a variable result initialize to an empty string
 
+  // Iterate through the string retrieve every character
+  for (const char of string) {
+    // concat result string w/ invoked  callback function w/ the characters passed in as an argument
+    result += callback(char);
+  }
 
-
-/*
+  return result;
+}
