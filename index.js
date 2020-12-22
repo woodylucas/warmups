@@ -765,3 +765,28 @@ function effectString(string, callback) {
 
   return result;
 }
+
+var compress = function (chars) {
+  // Declare a variable i initialize to 0.
+  // Declare a variable length = 0
+  let [i, length] = [0, 0];
+  // While ith index is less than the characters length
+  while (i < chars.length) {
+    // Declare a variable j initialzie to the ith character
+    let j = i; // J is initialzie to zero.
+    while (j < chars.length && chars[j] === chars[i]) {
+      // incrememnt the j pointer.
+      j++;
+    }
+    // Set the chars[length] postion to the character at the ith position.
+    chars[length++] = chars[i];
+    if (j - i > 1) {
+      let count = j - i + "";
+      for (const char of count.slice()) {
+        chars[length++] = char;
+      }
+    }
+    i = j;
+  }
+  return length;
+};
