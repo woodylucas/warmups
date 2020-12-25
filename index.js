@@ -790,3 +790,58 @@ var compress = function (chars) {
   }
   return length;
 };
+
+// Candy crush
+
+const candyCrush = (board) => {
+  const m = board.length;
+  const n = board[0].length;
+
+  let done = false;
+  // Crush Rows
+  for (let row = 0; row < m; row++) {
+    for (let col = 0; col < n - 2; col++) {
+      let num1 = Math.abs(board[row][col]);
+      let num2 = Math.abs(board[row][col + 1]);
+      let num3 = Math.abs(board[row][col + 2]);
+
+      if (num1 === num2 && num2 === num3 && num1 !== 0) {
+        board[row][col] = -num1;
+        board[row][col + 1] = -num2;
+        board[row][col + 2] = -num3;
+        done = true;
+      }
+    }
+  }
+  // Crush Columns
+  for (let col = 0; col < n; col++) {
+    for (let row = 0; row < m - 2; row++) {
+      let num1 = Math.abs(board[row][col]);
+      let num2 = Math.abs(board[row + 1][col]);
+      let num3 = Math.abs(board[row + 2][col]);
+
+      if (num1 === num2 && num2 === num3 && num1 !== 0) {
+        board[row][col] = -num1;
+        board[row + 1][col] = -num2;
+        board[row + 2][col] = -num3;
+        done = true;
+      }
+    }
+  }
+
+  // Gravity
+
+  for (let col = 0; col < n; col++) {
+    let idx = m - 1;
+    for (let row = m - 1; row >= 0; row--) {
+      if (board[row][col] >= 0) {
+        board[idx--][col] = board[row][col];
+      }
+    }
+    for (let row = idx; row >= 0; row--) {
+      board[row][col] = 0;
+    }
+  }
+
+  return done ? candyCrush(board) : board;
+};
