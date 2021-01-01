@@ -845,3 +845,19 @@ const candyCrush = (board) => {
 
   return done ? candyCrush(board) : board;
 };
+
+function firstDuplicateValue(array) {
+  // Time Complexity: O(n) | Space: O(n)
+  const map = new Map();
+  for (const num of array) {
+    if (!map.has(num)) {
+      map.set(num, 1);
+    } else {
+      map.set(num, map.get(num) + 1);
+    }
+    if (map.get(num) > 1) {
+      return num;
+    }
+  }
+  return -1;
+}
