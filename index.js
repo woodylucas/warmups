@@ -848,23 +848,36 @@ const candyCrush = (board) => {
 
 function firstDuplicateValue(array) {
   // Time Complexity: O(n) | Space: O(n)
-  const map = new Map();
+  // const map = new Map();
+  // for (const num of array) {
+  //   if (!map.has(num)) {
+  //     map.set(num, 1);
+  //   } else {
+  //     map.set(num, map.get(num) + 1);
+  //   }
+  //   if (map.get(num) > 1) {
+  //     return num;
+  //   }
+  // }
+  // return -1;
+
+  // Time: O(n) | Space O(1)
   for (const num of array) {
-    if (!map.has(num)) {
-      map.set(num, 1);
-    } else {
-      map.set(num, map.get(num) + 1);
-    }
-    if (map.get(num) > 1) {
-      return num;
-    }
+    // Retrieve the absolute value
+    const absValue = Math.abs(num);
+    // If the element is negative return absValue
+    if (array[absValue - 1] < 0) return absValue;
+    // Set the element to negative of index
+    array[absValue - 1] *= -1;
   }
   return -1;
 }
 
 /*
 
-Alternate solution: 
+Alternate solution: 1 
+
+Same time complexity 
 
 function firstDuplicateValue(array) {
 	const seen = new Set(); 
@@ -874,6 +887,24 @@ function firstDuplicateValue(array) {
 	}
 	return - 1; 
 }
+
+
+
+function firstDuplicateValue(array) {
+
+  Time: O(n) | Space O(1)
+
+	for (const num of array) {
+		// Retrieve the absolute value 
+		const absValue = Math.abs(num); 
+		// If the element is negative return absValue
+		if (array[absValue - 1] < 0) return absValue; 
+		// Set the element to negative of index
+		array[absValue - 1] *= -1; 
+	}
+  return -1;
+}
+
 
 
 */
