@@ -861,3 +861,19 @@ function firstDuplicateValue(array) {
   }
   return -1;
 }
+
+/*
+
+Alternate solution: 
+
+function firstDuplicateValue(array) {
+	const seen = new Set(); 
+	for (const num of array) {
+		if (seen.has(num)) return num; 
+		seen.add(num); 
+	}
+	return - 1; 
+}
+
+
+*/
