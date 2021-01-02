@@ -908,3 +908,21 @@ function firstDuplicateValue(array) {
 
 
 */
+
+function censor() {
+  const pair = {}; // Declare a constant variable pair that is initialize to an empty object
+  // return a function that accepts either one or two arguments
+  return function (stringOne, stringTwo) {
+    // IF two strings are present store the pair witin the pair object
+    if (stringTwo) {
+      pair[stringOne] = stringTwo;
+      return;
+    }
+
+    // If there is only one string present, change the current stringOne with the stringTwo --> value in pair
+    Object.keys(pair).forEach((key) => {
+      stringOne = stringOne.replace(key, pair[key]);
+    });
+    return stringOne;
+  };
+}
