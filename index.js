@@ -926,3 +926,18 @@ function censor() {
     return stringOne;
   };
 }
+
+// Reverse a string with pointers
+
+function FirstReverse(str) {
+  const reverse = str.split("");
+  let [leftIdx, rightIdx] = [0, reverse.length - 1];
+
+  while (leftIdx < rightIdx) {
+    const temp = reverse[leftIdx];
+    reverse[leftIdx++] = reverse[rightIdx];
+    reverse[rightIdx--] = temp;
+  }
+
+  return reverse.join("");
+}
