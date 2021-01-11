@@ -146,3 +146,44 @@ var obj2 = {
 
 nestedEvenSum(obj1); // 6
 nestedEvenSum(obj2); // 10
+
+function capitalizeWords(words) {
+  if (words.length === 1) return [words[0].toUpperCase()];
+  const word = words[words.length - 1].toUpperCase();
+  const result = capitalizeWords(words.slice(0, -1));
+  result.push(word);
+  return result;
+}
+
+/*
+iterative approach: 
+
+
+
+function capitalizeWords (words) {
+  const capitalize = Array.from({length: words.length}); 
+  
+  for (let i = 0; i < words.length; i++) {
+      const word = words[i]; 
+      capitalize[i] = word.toUpperCase(); 
+  }
+  return capitalize; 
+}
+
+
+
+
+
+pure recursion: 
+
+function capitalizeWords (words) {
+    let upperCase = []; 
+    if (words.length === 0) return upperCase; 
+    const word = words[0].toUpperCase(); 
+    upperCase.push(word); 
+    upperCase = upperCase.concat(capitalizeWords(words.slice(1))); 
+    return upperCase; 
+}
+
+
+*/
