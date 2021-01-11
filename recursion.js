@@ -41,3 +41,17 @@ function isPalindrome(string){
 }
 
 */
+
+function flatten(arr) {
+  // add whatever parameters you deem necessary - good luck!
+  return arr.reduce(
+    (acc, curVal) =>
+      acc.concat(Array.isArray(curVal) ? flatten(curVal) : curVal),
+    []
+  );
+}
+
+// flatten([1, 2, 3, [4, 5] ]) // [1, 2, 3, 4, 5]
+// flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
+// flatten([[1],[2],[3]]) // [1,2,3]
+// flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3
