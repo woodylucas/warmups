@@ -187,3 +187,47 @@ function capitalizeWords (words) {
 
 
 */
+
+function stringifyNumbers(dict) {
+  const stringify = {};
+  for (const key in dict) {
+    if (typeof dict[key] === "object" && !Array.isArray(dict[key])) {
+      stringify[key] = stringifyNumbers(dict[key]);
+    } else if (Number.isInteger(dict[key])) {
+      stringify[key] = String(dict[key]);
+    } else {
+      stringify[key] = dict[key];
+    }
+  }
+  return stringify;
+}
+
+/*
+let obj = {
+    num: 1,
+    test: [],
+    data: {
+        val: 4,
+        info: {
+            isRight: true,
+            random: 66
+        }
+    }
+}
+/*
+
+stringifyNumbers(obj)
+
+/*
+{
+    num: "1",
+    test: [],
+    data: {
+        val: "4",
+        info: {
+            isRight: true,
+            random: "66"
+        }
+    }
+}
+*/
