@@ -95,5 +95,16 @@ function capitalizeFirst (array) {
 }
 
 
+pure recursion: 
+
+
+function capitalizeFirst (array) {
+ let capital = []; 
+ if (array.length === 0) return capital; 
+ const first = array[0].charAt(0).toUpperCase() + array[0].slice(1); 
+ capital.push(first); 
+ capital = capital.concat(capitalizeFirst(array.slice(1))); 
+ return capital; 
+}
 
 */
