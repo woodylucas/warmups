@@ -266,3 +266,9 @@ function fib(n) {
   if (n <= 2) return 1;
   return fib(n - 1) + fib(n - 2);
 }
+
+function fib(n, memoize = { 1: 1, 2: 1 }) {
+  if (n in memoize) return memoize[n];
+  memoize[n] = fib(n - 1, memoize) + fib(n - 2, memoize);
+  return memoize[n];
+}
