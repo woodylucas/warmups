@@ -75,6 +75,24 @@ function capitalizeFirst(array) {
   }
   return capitalize; 
 }
+*/
+
+/*
+
+helper method: 
+
+function capitalizeFirst (array) {
+  const first = []; 
+  function helper(arr) {
+      if (arr.length === 0) return; 
+          const capitalFirst = arr[0].charAt(0).toUpperCase() + arr[0].slice(1); 
+          first.push(capitalFirst);
+          helper(capitalizeFirst(arr.slice(1))); 
+          
+  }
+  helper(array); 
+  return first; 
+}
 
 
 
