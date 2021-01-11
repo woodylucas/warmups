@@ -231,3 +231,33 @@ stringifyNumbers(obj)
     }
 }
 */
+
+const obj = {
+  stuff: "foo",
+  data: {
+    val: {
+      thing: {
+        info: "bar",
+        moreInfo: {
+          evenMoreInfo: {
+            weMadeIt: "baz",
+          },
+        },
+      },
+    },
+  },
+};
+
+function collectStrings(object) {
+  let stringArr = [];
+  for (const key in object) {
+    if (typeof object[key] === "string") {
+      stringArr.push(object[key]);
+    } else if (typeof object[key] === "object") {
+      stringArr = stringArr.concat(collectStrings(object[key]));
+    }
+  }
+  return stringArr;
+}
+
+collectStrings(obj); // ["foo", "bar", "baz"])
