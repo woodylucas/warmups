@@ -267,8 +267,30 @@ function fib(n) {
   return fib(n - 1) + fib(n - 2);
 }
 
+/*
+
+
 function fib(n, memoize = { 1: 1, 2: 1 }) {
   if (n in memoize) return memoize[n];
   memoize[n] = fib(n - 1, memoize) + fib(n - 2, memoize);
   return memoize[n];
 }
+
+
+function fib (n) {
+    const lastTwo = [1, 1]; 
+    let counter = 3; 
+    
+    while (counter <= n) {
+        const nextFib = lastTwo[0] + lastTwo[1]; 
+        lastTwo[0] = lastTwo[1]; 
+        lastTwo[1] = nextFib; 
+        counter++; 
+    }
+    return n < 1 ? lastTwo[0] : lastTwo[1];
+}
+
+
+
+
+*/
