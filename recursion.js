@@ -55,3 +55,27 @@ function flatten(arr) {
 // flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
 // flatten([[1],[2],[3]]) // [1,2,3]
 // flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3
+
+function capitalizeFirst(array) {
+  let capitalize = [];
+  if (array.length === 0) return capitalize;
+  let firstLetter = array[0].charAt(0).toUpperCase() + array[0].slice(1);
+  capitalize.push(firstLetter);
+  capitalize = capitalize.concat(capitalizeFirst(array.slice(1)));
+  return capitalize;
+}
+
+// capitalizeFirst(['car','taco','banana']); // ['Car','Taco','Banana']
+
+/* iterative 
+  const capitalize = Array.from({length: array.length})
+  for (let i = 0; i < array.length; i++) {
+      const elem = array[i]; 
+      capitalize[i] = elem[0].toUpperCase() + elem.slice(1); 
+  }
+  return capitalize; 
+}
+
+
+
+*/
