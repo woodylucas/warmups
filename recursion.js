@@ -294,3 +294,28 @@ function fib (n) {
 
 
 */
+
+function getPermutations(array) {
+  const permutations = [];
+  permutationsHelper(0, array, permutations);
+  return permutations;
+}
+
+function permutationsHelper(i, array, permutations) {
+  if (i === array.length - 1) {
+    permutations.push(array.slice());
+  } else {
+    for (let j = i; j < array.length; j++) {
+      // j == i
+      swap(array, i, j);
+      permutationsHelper(i + 1, array, permutations);
+      swap(array, i, j);
+    }
+  }
+}
+
+function swap(array, idxOne, idxTwo) {
+  const temp = array[idxOne];
+  array[idxOne] = array[idxTwo];
+  array[idxTwo] = temp;
+}
