@@ -148,3 +148,35 @@ function fromLast(list, n) {
   }
   return slow;
 }
+
+// This is an input class. Do not edit.
+class LinkedList {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+function removeKthNodeFromEnd(head, k) {
+  let slow = head;
+  let fast = head;
+  let counter = 1;
+
+  while (counter <= k) {
+    fast = fast.next;
+    counter++;
+  }
+
+  if (fast === null) {
+    head.value = head.next.value;
+    head.next = head.next.next;
+    return;
+  }
+
+  while (fast.next) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  slow.next = slow.next.next;
+}
