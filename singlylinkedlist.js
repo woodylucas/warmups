@@ -82,4 +82,19 @@ class LinkedList {
     }
     prevNode.next = null;
   }
+
+  insetLast(data) {
+    const last = this.getLast();
+    if (!this.head) {
+      return;
+    }
+
+    if (last) {
+      // There are exisiting nodes in our chain
+      last.next = new Node(data);
+    } else {
+      // There are no nodes in the chain
+      this.head = new Node(data);
+    }
+  }
 }
