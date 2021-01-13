@@ -31,4 +31,19 @@ class LinkedList {
   getFirst() {
     return this.head; // the first node element is the head
   }
+  // Grab the tail
+  getLast() {
+    let node = this.head; // Declare a varible node initailzie to the head.
+
+    if (!node) return null; // There is no node retrun nul
+
+    // While node exist
+    while (node) {
+      // If there is no node next
+      if (!node.next) {
+        return node; // Return the node that is the tail
+      }
+      node = node.next; // Otherwise keep searching
+    }
+  }
 }
