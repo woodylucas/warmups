@@ -26,4 +26,9 @@ class LinkedList {
     }
     return count; // return count (which is the size)
   }
+
+  // First node method
+  getFirst() {
+    return this.head; // the first node element is the head
+  }
 }
