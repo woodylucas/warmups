@@ -102,13 +102,33 @@ class LinkedList {
 // Midpoint
 
 function midpoint(list) {
+  // Two pointers pointed to the first node
   let slow = list.head;
   let fast = list.head;
+  // Iterate through our linked list
 
   while (fast.next && fast.next.next) {
-    slow = slow.next;
-    fast = fast.next.next;
+    slow = slow.next; // Advance by one element
+    fast = fast.next.next; // Advance by two elements
   }
 
   return slow;
+}
+
+// Circular
+
+function circular(list) {
+  // Declare two pointers initialize to slow and fast
+  let slow = list.head;
+  let fast = list.head;
+
+  // If this condtion breaks the node isn't circular
+  while (fast.next && fast.next.next) {
+    // Advance by one node
+    slow = slow.next;
+    // Advance by two nodes
+    fast = fast.next.next;
+    if (slow === fast) return true;
+  }
+  return false;
 }
