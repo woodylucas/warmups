@@ -60,18 +60,24 @@ class LinkedList {
   }
 
   removeLast() {
+    // If there is no head, just return
     if (!this.head) {
       return;
     }
-
+    // If there is no tail, set the head to null which means the head is the only item
     if (!this.head.next) {
       this.head = null;
       return;
     }
+    // Previous node initialize to head
     let prevNode = this.head;
+    // node initialize to the next node
     let node = this.head.next;
+    // While there is a next node
     while (node.next) {
+      // set previous to next node
       prevNode = node;
+      // set next node to next node
       node = node.next;
     }
     prevNode.next = null;
