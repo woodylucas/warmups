@@ -319,3 +319,21 @@ function swap(array, idxOne, idxTwo) {
   array[idxOne] = array[idxTwo];
   array[idxTwo] = temp;
 }
+
+function binarySearch(array, target) {
+  return binarySearchHelper(array, target, 0, array.length - 1);
+}
+
+function binarySearchHelper(array, target, leftIdx, rightIdx) {
+  if (leftIdx > rightIdx) return -1;
+  const middleIdx = leftIdx + Math.floor((rightIdx - leftIdx) / 2);
+  const potentialMatch = array[middleIdx];
+
+  if (target === potentialMatch) {
+    return middleIdx;
+  } else if (target > potentialMatch) {
+    return binarySearchHelper(array, target, middleIdx + 1, rightIdx);
+  } else {
+    return binarySearchHelper(array, target, leftIdx, middleIdx - 1);
+  }
+}
