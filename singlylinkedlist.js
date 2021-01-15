@@ -183,26 +183,30 @@ function removeKthNodeFromEnd(head, k) {
 
 // Add two numbers solution
 var addTwoNumbers = function (l1, l2) {
-  let head = new ListNode(0);
-  let node = head;
+  let head = new ListNode(0); // new list
+  let node = head; // head
   let carry = 0;
 
   while (l1 || l2) {
+    // Obtain the values of l1 and l2
     let l1Value = l1 ? l1.val : 0;
     let l2Value = l2 ? l2.val : 0;
 
+    // Sum of two values
     let sum = l1Value + l2Value + carry;
     carry = 0;
     let newValue = sum;
 
+    // strip off the carry over
     if (sum > 9) {
-      newValue = sum % 10;
+      newValue = sum % 10; // striping of the 10 place
       carry = 1;
     }
-
+    // Take our new value and assign to a linked list
     node.next = new ListNode(newValue);
     node = node.next;
 
+    // Traversal
     if (l1) {
       l1 = l1.next;
     }
