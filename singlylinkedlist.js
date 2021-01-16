@@ -221,3 +221,38 @@ var addTwoNumbers = function (l1, l2) {
 
   return head.next;
 };
+
+var mergeTwoLists = function (l1, l2) {
+  let head = new ListNode(0); // Establish a linked list w/ 0 pointed to the head used as a dummy head
+  let node = head; // Declare a variable node initialzie to the linked list
+
+  // Iterate through the linked list if they're not null so while they exist
+
+  while (l1 && l2) {
+    // IF the the value at l1 is less than l2 value
+    if (l1.val < l2.val) {
+      // Set the node next from the head to l1
+      node.next = l1;
+      l1 = l1.next; // iterate to the next node in l1
+    } else {
+      // Otherwise
+      node.next = l2; // Set node to l2
+      l2 = l2.next; // iterate to the next node in l2
+    }
+
+    // Update node:
+    node = node.next;
+  }
+  // IF the list is still not null
+  if (l1) {
+    node.next = l1;
+    l1 = l1.next;
+  }
+
+  if (l2) {
+    node.next = l2;
+    l2 = l2.next;
+  }
+
+  return head.next;
+};
