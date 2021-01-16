@@ -256,3 +256,38 @@ var mergeTwoLists = function (l1, l2) {
 
   return head.next;
 };
+
+var reverseBetween = function (head, m, n) {
+  if (head === null) return null;
+
+  let prevNode = null;
+  let currNode = head;
+
+  while (m > 1) {
+    prevNode = currNode;
+    currNode = currNode.next;
+    m--;
+    n--;
+  }
+
+  let connection = prevNode;
+  let tail = currNode;
+
+  while (n > 0) {
+    let nextNode = currNode.next;
+    currNode.next = prevNode;
+    prevNode = currNode;
+    currNode = nextNode;
+    n--;
+  }
+
+  if (connection) {
+    connection.next = prevNode;
+  } else {
+    head = prevNode;
+  }
+
+  tail.next = currNode;
+
+  return head;
+};
